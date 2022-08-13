@@ -1,10 +1,9 @@
 package ru.netology.javaqa_hw13;
 
-
 public class ProductRepository {
-    private Product[] products;
+    Product[] products = new Product[0];
 
-    public void add(Product product) {
+    public void save(Product product) {
         Product[] tmp = new Product[products.length + 1];
         for (int i = 0; i < products.length; i++) {
             tmp[i] = products[i];
@@ -13,7 +12,11 @@ public class ProductRepository {
         products = tmp;
     }
 
-    public void removeById(int id) {
+    public Product[] getProducts() {
+        return products;
+    }
+
+    public void removeProductById(int id) {
         Product[] tmp = new Product[products.length - 1];
         int copyToIndex = 0;
         for (Product product : products) {
@@ -24,12 +27,5 @@ public class ProductRepository {
         }
         products = tmp;
     }
-
-    public Product[] findAll() {
-
-        return products;
-    }
-
-
 
 }
